@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding:0;
+    font-family: Byekan;
+}
+@font-face{
+    font-family:Byekan;
+    src: url('./font/yekan/BYekan-webfont.woff');
+}
+.main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(90deg, hsla(120, 82%, 37%, 1) 0%, hsla(204, 100%, 68%, 1) 100%);
+}
+.main-container{
+    position: relative;
+    width: 50vw;
+    height: 40vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: snow;
+    border-radius: 8px;
+    direction: rtl;
+}
+.login-part{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.image-part{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./image/1.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 80%;
+}
+.login-title{
+    position: absolute;
+    top: 8vh;
+}
+span{
+    font-size: 18px;
+}
+input{
+    background-color: rgb(211, 208, 208);
+    width: 20vw;
+    height: 25px;
+    margin: 2%;
+    border-radius: 8px;
+    border: unset;
+    outline: unset;
+    padding: 5px;
+    padding-right: 10px;
+    direction: rtl;
+    font-size: 18px;
+}
+button{
+    width: 21vw;
+    height: 35px;
+    background-color: rgb(17, 172, 17);
+    border: unset;
+    margin: 2%;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+}
