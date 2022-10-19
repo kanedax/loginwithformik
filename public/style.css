@@ -18,7 +18,7 @@
 .main-container{
     position: relative;
     width: 50vw;
-    height: 45vw;
+    height: 86vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -34,6 +34,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 .image-part{
     width: 50%;
@@ -86,6 +87,7 @@ input{
     padding-right: 10px;
     direction: rtl;
     font-size: 18px;
+    position: relative;
 }
 button{
     width: 21vw;
@@ -96,4 +98,52 @@ button{
     border-radius: 8px;
     cursor: pointer;
     font-size: 18px;
+}
+.dp__input{
+    text-align: center;
+    
+}
+.username-input-time{
+    position: relative;
+}
+.datepicker{
+    position: absolute;
+    top: 5px;
+    width: 21vw;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.datepicker select{
+    border: unset;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+.datepicker select:focus-visible{
+   outline: none !important;
+}
+i{
+    color: green;
+    font-size: 18px;
+    margin-top: .5%;
+}
+.file-container{
+    position: relative;
+    top: -43px;
+    opacity: 0;
+
+}
+.username-input-file{
+    margin-right: 8%;
+}
+.input-container{
+    position: relative;
+
 }

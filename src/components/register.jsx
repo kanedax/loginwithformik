@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, Formik } from 'formik';
 import * as yup from "yup";
 import Formikcontrol from '../formikcomponents/formikcontrol';
-import { DatePicker } from 'jalali-react-datepicker/';
+import axios from 'axios';
 
 
 const initialValues = {
@@ -14,9 +14,19 @@ const initialValues = {
     password: '',
     confirm_password: '',
     auth_mode: 'mobile',
+    date:'',
+    image:null,
 }
 const onSubmit = (values) => {
     console.log(values);
+    let formData = new FormData();
+    formData.append('user_name' , values.user_name)
+    formData.append('mobile' , values.mobile)
+    formData.append('password' , values.password)
+    formData.append('image' , values.image)
+
+    axios.post('url' , formData , {headers:{'content-type' : 'multipart/form-data'}})
+
 }
 const validationSchema = yup.object({
     email: yup.string().when('auth_mode', {
@@ -35,15 +45,30 @@ const validationSchema = yup.object({
     confirm_password: yup.string()
         .oneOf([yup.ref('password'), ''], 'عدم تطابق')
         .required('لطفا این قسمت را پر کنید'),
-    user_name: yup.string().required('لطفا این قسمت را پر کنید').matches(/^[\s0-9a-zA-Z]+$/, 'فقط اعداد و حروف کوچک و بزرگ انگلیسی'),
-    fisrt_name: yup.string().matches(/^[\u0600-\u06FF\s0-9a-zA-Z]+$/, 'فقط مجاز به استفاده از اعداد و حروف بزرگ و کوچک انگلیسی و حروف فارسی هستید'),
-    last_name: yup.string().matches(/^[\u0600-\u06FF\s0-9a-zA-Z]+$/, 'فقط مجاز به استفاده از اعداد و حروف بزرگ و کوچک انگلیسی و حروف فارسی هستید'),
+    user_name: yup.string()
+    .required('لطفا این قسمت را پر کنید')
+    .matches(/^[\s0-9a-zA-Z]+$/, 'فقط اعداد و حروف کوچک و بزرگ انگلیسی'),
+    fisrt_name: yup.string()
+    .matches(/^[\u0600-\u06FF\s0-9a-zA-Z]+$/, 'فقط مجاز به استفاده از اعداد و حروف بزرگ و کوچک انگلیسی و حروف فارسی هستید'),
+    last_name: yup.string()
+    .matches(/^[\u0600-\u06FF\s0-9a-zA-Z]+$/, 'فقط مجاز به استفاده از اعداد و حروف بزرگ و کوچک انگلیسی و حروف فارسی هستید'),
+    date: yup.string()
+    .required('لطفا این قسمت را پر کنید'),
+    image: yup.mixed()
+    .required('لطفا این قسمت را پر کنید')
+    .test("filesize" , "حجم فایل نمیتواند از 100 کیلو بایت بیشتر باشد"
+     , value=> value && value.size <= (100*1024))
+    .test("format" , "فرمت فایل باید jpg باشد" , value=> value && value.type === "image/jpg"),
 })
 
 const authModeValues = [
     { id: 'mobile', value: 'موبایل' },
     { id: 'email', value: 'ایمیل' },
 ]
+
+const handleSetDate = (value)=>{
+
+}
 
 const Register = () => {
     return (
@@ -54,7 +79,7 @@ const Register = () => {
         >
             {
                 formik => {
-                    console.log(formik);
+                    
                     return (
                         <div className='main'>
                             <div className='main-container'>
@@ -121,10 +146,22 @@ const Register = () => {
                                         formik={formik}
                                         control="input"
                                         type="password"
-                                        name="password"
+                                        name="confirm_password"
                                         placeholder="تایید کلمه عبور"
                                     />
-                                    <DatePicker/>
+                                    <Formikcontrol
+                                        formik={formik}
+                                        control="date"
+                                        name="date"
+                                        placeholder="تاریخ تولد"
+                                    />
+                                    <Formikcontrol
+                                        formik={formik}
+                                        control="file"
+                                        name="image"
+                                        label="تصویر پروفایل"
+                                    />
+                                    
                                     <div className='submitbutton'>
                                         <button>ثبت نام</button>
                                     </div>
