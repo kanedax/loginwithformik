@@ -37,26 +37,6 @@ const onSubmit = (values) => {
         })
 }
 
-const handleLogin = async () => {
-    console.log();
-    await axios.post('http://authservice.azhadev.ir/api/auth/login').
-        then(res => {
-            console.log(res);
-            localStorage.setItem("token", res.data.token);
-        })
-}
-
-const handleLogOut = async () => {
-    console.log();
-    await axios.get('http://authservice.azhadev.ir/api/auth/logout', {
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-    }).then(res => {
-        console.log(res);
-        localStorage.clear();
-    })
-}
 const handleGetUser = () => {
     axios.get('http://authservice.azhadev.ir/api/auth/user', {
         headers: {
@@ -137,12 +117,6 @@ const TestLogin = () => {
                                     />
                                     <div className='submitbutton'>
                                         <button type='submit'>ثبت نام</button>
-                                    </div>
-                                    <div className='submitbutton'>
-                                        <button onClick={handleLogin} type='button'> ورود</button>
-                                    </div>
-                                    <div className='submitbutton'>
-                                        <button onClick={handleLogOut} type='button'> خروج</button>
                                     </div>
                                     <div className='submitbutton'>
                                         <button onClick={handleGetUser} type='button'> دریافت اطلاعات</button>
