@@ -4,6 +4,7 @@ import * as yup from "yup";
 import Formikcontrol from '../formikcomponents/formikcontrol';
 import axios from 'axios';
 import swal from 'sweetalert';
+import { Link } from "react-router-dom";
 
 
 const initialValues = {
@@ -13,8 +14,12 @@ const initialValues = {
 
 }
 
-const onSubmit = (values) => {
+const onSubmit = (values, submitProps) => {
     console.log(values);
+    setTimeout(() => {
+        submitProps.setSubmitting(false);
+        submitProps.resetForm();
+    }, 3000);
     axios.post('http://authservice.azhadev.ir/api/auth/register', values).
         then(res => {
             console.log(res);
@@ -116,10 +121,23 @@ const TestLogin = () => {
                                         placeholder="تایید کلمه عبور"
                                     />
                                     <div className='submitbutton'>
-                                        <button type='submit'>ثبت نام</button>
+                                        <button type='submit' disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting} >
+                                            {
+                                                formik.isSubmitting ? (
+                                                    <div className="fa-3x">
+                                                        <i className="fas fa-spinner fa-spin" style={{ color: 'blue' }} ></i>
+                                                    </div>
+                                                ) : ("ثبت نام")
+                                            }
+                                        </button>
                                     </div>
                                     <div className='submitbutton'>
-                                        <button onClick={handleGetUser} type='button'> دریافت اطلاعات</button>
+                                        <button onClick={handleGetUser} type='button' disabled={!localStorage.length}> دریافت اطلاعات</button>
+                                    </div>
+                                    <div className='register' >
+                                        <Link to="/login">
+                                            ورود
+                                        </Link>
                                     </div>
                                 </Form>
                                 <div className='image-part'></div>

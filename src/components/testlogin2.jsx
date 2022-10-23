@@ -4,7 +4,7 @@ import * as yup from "yup";
 import Formikcontrol from '../formikcomponents/formikcontrol';
 import axios from 'axios';
 import swal from 'sweetalert';
-
+import { NavLink } from "react-router-dom";
 
 const initialValues = {
     phone: '',
@@ -13,8 +13,12 @@ const initialValues = {
 
 }
 
-const onSubmit = (values) => {
+const onSubmit = (values, submitProps) => {
     console.log(values);
+    setTimeout(() => {
+        submitProps.setSubmitting(false);
+        submitProps.resetForm();
+    }, 3000);
     axios.post('http://authservice.azhadev.ir/api/auth/login', values).
         then(res => {
             console.log(res);
@@ -61,6 +65,7 @@ const handleLogOut = async () => {
             })
         }
         localStorage.clear();
+
     })
 }
 
@@ -88,7 +93,7 @@ const TestLogin2 = () => {
         >
             {
                 formik => {
-
+                    console.log(formik);
                     return (
                         <div className='main'>
                             <div className='main-container'>
@@ -119,13 +124,27 @@ const TestLogin2 = () => {
                                         placeholder="تایید کلمه عبور"
                                     />
                                     <div className='submitbutton'>
-                                        <button type='submit'>ورود </button>
+                                        <button type='submit' disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting} >
+                                            {
+                                                formik.isSubmitting ? (
+                                                    <div className="fa-3x">
+                                                        <i className="fas fa-spinner fa-spin" style={{ color: 'blue' }} ></i>
+                                                    </div>
+                                                ) : ("ورود ")
+                                            }
+                                        </button>
                                     </div>
                                     <div className='submitbutton'>
-                                        <button onClick={handleLogOut} type='button'> خروج</button>
+                                        <button onClick={handleLogOut} type='button' disabled={!localStorage.length} > خروج</button>
+                                    </div>
+                                    <div className='image-part'></div>
+                                    <div className='register'>
+                                        <NavLink to="/register">
+                                            ثبت نام
+                                        </NavLink>
                                     </div>
                                 </Form>
-                                <div className='image-part'></div>
+
                             </div>
                         </div>
                     )
