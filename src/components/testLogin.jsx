@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Formik } from 'formik';
 import * as yup from "yup";
-import Formikcontrol from '../formikcomponents/formikcontrol';
+import Formikcontrol from '../formikcomponents/Formikcontrol';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { Link } from "react-router-dom";

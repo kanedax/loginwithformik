@@ -1,6 +1,6 @@
 import { ErrorMessage, FastField } from 'formik';
 import React, { Fragment } from 'react';
-import PersonalError from './personalError';
+import PersonalError from './PersonalError';
 
 
 const Radio = (props) => {

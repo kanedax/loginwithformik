@@ -1,6 +1,6 @@
 import { ErrorMessage} from 'formik';
 import React from 'react';
-import PersonalError from './personalError';
+import PersonalError from './PersonalError';
 
 const File = ({name, label, formik}) => {
     return (

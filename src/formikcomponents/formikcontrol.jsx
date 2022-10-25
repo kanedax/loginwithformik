@@ -1,8 +1,8 @@
 import React from 'react';
-import Date from './date';
-import File from './file';
+import Date from './Date';
+import File from './File';
 import Input from './Input';
-import Radio from './radio';
+import Radio from './Radio';
 
 
 const Formikcontrol = (props) => {
