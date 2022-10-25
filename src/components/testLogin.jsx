@@ -94,6 +94,9 @@ const TestLogin = () => {
                     return (
                         <div className='main'>
                             <div className='main-container'>
+                                <div className='image-part'>
+                                    <i className='fas fa-user' ></i>
+                                </div>
                                 <Form className='login-part'>
                                     <div className='login-title'>
                                         <span> ثبت نام اعضا</span>
@@ -136,11 +139,10 @@ const TestLogin = () => {
                                     </div>
                                     <div className='register' >
                                         <Link to="/login">
-                                            ورود
+                                            برای ورود کلیک کنید
                                         </Link>
                                     </div>
                                 </Form>
-                                <div className='image-part'></div>
                             </div>
                         </div>
                     )

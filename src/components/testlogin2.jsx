@@ -97,9 +97,12 @@ const TestLogin2 = () => {
                     return (
                         <div className='main'>
                             <div className='main-container'>
+                                <div className='image-part'>
+                                    <i className='fas fa-user'></i>
+                                </div>
                                 <Form className='login-part'>
                                     <div className='login-title'>
-                                        <span> ثبت نام اعضا</span>
+                                        <span> ورود به سامانه </span>
                                     </div>
 
                                     <Formikcontrol
@@ -116,13 +119,6 @@ const TestLogin2 = () => {
                                         name="password"
                                         placeholder="کلمه عبور"
                                     />
-                                    <Formikcontrol
-                                        formik={formik}
-                                        control="input"
-                                        type="password"
-                                        name="c_password"
-                                        placeholder="تایید کلمه عبور"
-                                    />
                                     <div className='submitbutton'>
                                         <button type='submit' disabled={!(formik.isValid && formik.dirty) || formik.isSubmitting} >
                                             {
@@ -137,10 +133,9 @@ const TestLogin2 = () => {
                                     <div className='submitbutton'>
                                         <button onClick={handleLogOut} type='button' disabled={!localStorage.length} > خروج</button>
                                     </div>
-                                    <div className='image-part'></div>
                                     <div className='register'>
                                         <NavLink to="/register">
-                                            ثبت نام
+                                            تاکنون ثبت نام نکرده اید؟
                                         </NavLink>
                                     </div>
                                 </Form>

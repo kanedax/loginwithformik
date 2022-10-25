@@ -9,7 +9,7 @@ const RouteMap = () => {
             <Routes>
                 <Route path="/login" element={<TestLogin2/>}></Route>
                 <Route path="/register" element={<TestLogin/>}></Route>
-                <Route path="*" element={<TestLogin/>} ></Route>
+                <Route path="*" element={<TestLogin2/>} ></Route>
             </Routes>
         </div>
     );
