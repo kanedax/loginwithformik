@@ -14,14 +14,12 @@ const initialValues = {
 }
 
 const onSubmit = (values, submitProps) => {
-    console.log(values);
     setTimeout(() => {
         submitProps.setSubmitting(false);
         submitProps.resetForm();
     }, 3000);
     axios.post('http://authservice.azhadev.ir/api/auth/login', values).
         then(res => {
-            console.log(res);
             if (res.status == '200') {
                 swal({
                     title: " ",
@@ -42,13 +40,11 @@ const onSubmit = (values, submitProps) => {
 }
 
 const handleLogOut = async () => {
-    console.log();
     await axios.get('http://authservice.azhadev.ir/api/auth/logout', {
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
     }).then(res => {
-        console.log(res);
         if (res.status == '200') {
             swal({
                 title: "خروج ",
@@ -93,7 +89,6 @@ const TestLogin2 = () => {
         >
             {
                 formik => {
-                    console.log(formik);
                     return (
                         <div className='main'>
                             <div className='main-container'>

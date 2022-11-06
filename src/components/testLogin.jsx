@@ -15,14 +15,13 @@ const initialValues = {
 }
 
 const onSubmit = (values, submitProps) => {
-    console.log(values);
     setTimeout(() => {
         submitProps.setSubmitting(false);
         submitProps.resetForm();
     }, 3000);
     axios.post('http://authservice.azhadev.ir/api/auth/register', values).
         then(res => {
-            console.log(res);
+            console.log(res)
             if (res.status == '200') {
                 swal({
                     title: "کاربر جدید",
@@ -48,7 +47,6 @@ const handleGetUser = () => {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
     }).then(res => {
-        console.log(res);
         if (res.status == '200') {
             swal({
                 title: "دریافت اطلاعات",

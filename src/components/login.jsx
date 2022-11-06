@@ -8,7 +8,6 @@ const initialValues = {
     password:'',
 }
 const onSubmit = (values)=> {
-    console.log(values);
 }
 const validationSchema = yup.object({
     email: yup.string().required('لطفا این قسمت را پر کنید').email('لطفا قالب ایمیل را رعایت کنید'),

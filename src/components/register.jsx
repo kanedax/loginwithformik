@@ -18,7 +18,6 @@ const initialValues = {
     image:null,
 }
 const onSubmit = (values) => {
-    console.log(values);
     let formData = new FormData();
     formData.append('user_name' , values.user_name)
     formData.append('mobile' , values.mobile)
